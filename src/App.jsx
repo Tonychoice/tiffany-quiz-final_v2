@@ -193,7 +193,7 @@ const defaultGame = {
 };
 
 export default function App() {
-  const isHost = winddow.location.search.includes("host=true"); 
+  const isHost = typeof window !== "undefined" && window.location.search.includes("host=true"); 
   const [password, setPassword] = useState("");
   const [unlocked, setUnlocked] = useState(false);
   const [name, setName] = useState("");
