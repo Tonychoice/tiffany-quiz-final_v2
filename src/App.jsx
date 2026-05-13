@@ -42,19 +42,19 @@ const questions = [
     id: "q1",
     text: "If Tiff could only wear one designer for the rest of her life, who would it be?",
     options: ["Alo", "Gucci", "Louis Vuitton", "Nike", "Zara"],
-    correctIndex: 1,
+    correctIndex: 0,
   },
   {
     id: "q2",
     text: "If Tiff could live anywhere for a year, where would she go?",
-    options: ["New York", "Miami", "Los Angeles", "Manila (BGC)"],
-    correctIndex: 3,
+    options: ["New York", "Miami", "Los Angeles", "Manila"],
+    correctIndex: 2,
   },
   {
     id: "q3",
-    text: "Would Tiff rather have a night out at...?",
-    options: ["Guvernment", "Phoenix", "Fluid"],
-    correctIndex: 1,
+    text: "Back in the day, which spot would Tiff most likely be found clubbing?",
+    options: ["Guvernment", "Phoenix", "Fluid", "Tonic", "Studio 69"],
+    correctIndex: 2,
   },
   {
     id: "q4",
@@ -64,39 +64,39 @@ const questions = [
   },
   {
     id: "q5",
-    text: "How would Tiff finish this sentence: “You can take anything away EXCEPT my…”",
-    options: ["Coffee in the morning", "Weekly lashes", "mani/pedi's"],
-    correctIndex: 2,
+    text: "What gym did Tiff work at back in the 2000's?",
+    options: ["GoodLife", "Curzons Fitness", "Gold's Gym", "Premier Fitness"],
+    correctIndex: 1,
   },
   {
     id: "q6",
-    text: "Who is most likely to push Tiff’s frustration button?",
-    options: ["Nuelle", "Sheldon", "Tricia"],
-    correctIndex: 2,
+    text: "Tiff is most likely to be mistaken for what ethnicity?",
+    options: ["Middle Eastern", "Chinese", "Spanish", "Indian"],
+    correctIndex: 3,
   },
   {
     id: "q7",
     text: "If you were going to set Tiff up on a date, who would she pick?",
     options: ["Boris Kodjoe", "Brad Pitt", "Idris Elba", "Morris Chestnut"],
-    correctIndex: 3,
+    correctIndex: 2,
   },
   {
     id: "q8",
-    text: "What was Tiff’s strange childhood obsession?",
-    options: ["Option 1", "Option 2", "Option 3"],
+    text: "What was Tiff most likely to order from a West Indian restaurant?",
+    options: ["Oxtail", "Jerk Chicken", "Fried/BBQ Chicken","Ackee and Saltfish"],
     correctIndex: 2,
   },
   {
     id: "q9",
-    text: "Would Tiff rather plan a party or attend a party?",
-    options: ["Plan", "Attend"],
-    correctIndex: 1,
+    text: "Finish Tiff's text: Babe - Nuelle and I have an appointment to ....",
+    options: ["Get our nails done", "Get our lashes done", "Get a wax", "All of the above"],
+    correctIndex: 3,
   },
   {
     id: "q10",
-    text: "Would Tiff rather kiss me in public or in private?",
-    options: ["Public", "Private", "Not at all"],
-    correctIndex: 1,
+    text: "Who is the LAST person Tiff would want sharing an embarrassing story about her?",
+    options: ["Tricia", "Leah", "Any one of her cousins", "Paul"],
+    correctIndex: 3,
   },
 ];
 
@@ -193,6 +193,7 @@ const defaultGame = {
 };
 
 export default function App() {
+  const isHost =new URLSearchParahms(window.location.search).get("host") === "true";
   const [password, setPassword] = useState("");
   const [unlocked, setUnlocked] = useState(false);
   const [name, setName] = useState("");
@@ -587,6 +588,7 @@ export default function App() {
     <main style={styles.page}>
       <QuizView />
       <Leaderboard />
+      {isHost && (
       <section style={{ ...styles.card, marginTop: 20 }}>
         <h2>Admin Controls</h2>
         <p style={{ color: "#c9c9c9", fontFamily: "Arial, sans-serif" }}>Host controls question pacing. PIN required.</p>
@@ -620,6 +622,7 @@ export default function App() {
           </>
         )}
       </section>
+      )}
     </main>
   );
 }
